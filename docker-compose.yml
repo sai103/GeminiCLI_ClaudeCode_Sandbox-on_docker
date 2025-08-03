@@ -1,0 +1,42 @@
+# Docker Compose設定ファイル
+
+services:
+  # Claude Code & Gemini CLI開発環境サービス
+  dev-sandbox:
+    # 現在のディレクトリのDockerfileからイメージをビルド
+    build: .
+    # イメージ名を明示的に指定
+    image: dev-sandbox
+    
+    # コンテナに分かりやすい名前を設定
+    container_name: dev-sandbox
+    
+    # ポートマッピング設定（ホスト:コンテナ）
+    # ローカルの5000番ポートをコンテナの5000番ポートに転送
+    ports:
+      - "5000:5000"
+    
+    # ボリュームマウント設定（ローカル:コンテナ）
+    volumes:
+      # メインの作業ディレクトリ
+      - ./workspace:/workspace
+      # プロジェクト専用ディレクトリ
+      - ./projects:/workspace/projects
+      # Gitの設定ファイルを読み取り専用でマウント
+      - ~/.gitconfig:/root/.gitconfig:ro
+    
+    # 環境変数の設定
+    environment:
+      - NODE_ENV=development
+    
+    # 標準入力を開いたままにする（インタラクティブモード）
+    stdin_open: true
+    
+    # 疑似TTYを割り当て（ターミナル操作可能）
+    tty: true
+    
+    # コンテナ内の作業ディレクトリを指定
+    working_dir: /workspace
+    
+    # コンテナ起動時に実行するコマンド
+    command: bash
