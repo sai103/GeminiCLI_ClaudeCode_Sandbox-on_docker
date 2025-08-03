@@ -36,7 +36,6 @@ docker exec -it dev-sandbox bash
 
 5. AI CLIツールをインストール
 ```bash
-chmod +x install-tools.sh
 ./install-tools.sh
 ```
 
