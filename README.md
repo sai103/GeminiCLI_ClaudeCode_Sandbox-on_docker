@@ -44,13 +44,13 @@ docker exec -it dev-sandbox bash
 ### Claude Codeの起動
 ```bash
 # アカウント連携で認証後に使用
-claude-code
+claude
 ```
 
 ### Gemini CLIの起動
 ```bash
 # アカウント連携で認証後に使用
-# 実際のコマンド名は公式リリース時に確認してください
+gemini
 ```
 
 ### 開発環境
