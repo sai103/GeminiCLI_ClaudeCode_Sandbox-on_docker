@@ -70,7 +70,7 @@ claude-code
 docker-compose up -d
 
 # コンテナ接続
-docker exec -it claude-dev-environment bash
+docker exec -it dev-sandbox bash
 
 # コンテナ停止
 docker-compose down
